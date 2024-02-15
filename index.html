@@ -26,10 +26,13 @@
             var odds = parseFloat(document.getElementById('odds').value);
             var desiredProfit = parseFloat(document.getElementById('desiredProfit').value);
 
-            var stake = (lostAmount * (1 + (desiredProfit / 100))) / (odds - 1);
+            var stake = (lostAmount * (1 + (desiredProfit / 100)) / (odds - 1));
             var stakeRounded = stake.toFixed(2);
 
+            var totalAmountNeeded = lostAmount + stake;
+
             document.getElementById('result').innerHTML = 'You should stake: ' + stakeRounded + ' units';
+            document.getElementById('result').innerHTML += '<br>Total amount needed to achieve desired profit: ' + totalAmountNeeded.toFixed(2) + ' units';
         }
     </script>
 </body>
