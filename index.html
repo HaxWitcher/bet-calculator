@@ -8,13 +8,13 @@
 <body>
     <h1>Betting Calculator</h1>
     <label for="lostAmount">Lost Amount:</label>
-    <input type="number" id="lostAmount" min="0"><br><br>
-
-    <label for="odds">Odds:</label>
-    <input type="number" id="odds" min="1"><br><br>
+    <input type="number" id="lostAmount" min="0" step="any"><br><br>
 
     <label for="desiredProfit">Desired Profit (%):</label>
-    <input type="number" id="desiredProfit" min="0"><br><br>
+    <input type="number" id="desiredProfit" min="0" step="any"><br><br>
+
+    <label for="odds">Odds:</label>
+    <input type="number" id="odds" min="1" step="any"><br><br>
 
     <button onclick="calculateStake()">Calculate Stake</button><br><br>
 
@@ -26,12 +26,10 @@
             var odds = parseFloat(document.getElementById('odds').value);
             var desiredProfit = parseFloat(document.getElementById('desiredProfit').value);
 
-            var profit = (lostAmount / 100) * desiredProfit;
-            var totalAmountNeeded = lostAmount + profit;
+            var stake = (lostAmount * (1 + (desiredProfit / 100))) / (odds - 1);
+            var stakeRounded = stake.toFixed(2);
 
-            var stake = (totalAmountNeeded / (odds - 1)).toFixed(2);
-
-            document.getElementById('result').innerHTML = 'You should stake: ' + stake + ' units';
+            document.getElementById('result').innerHTML = 'You should stake: ' + stakeRounded + ' units';
         }
     </script>
 </body>
