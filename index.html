@@ -1,3 +1,8 @@
+Vaša primjedba je potpuno razumljiva. Moj prethodni odgovor i kod zaista nisu pružili ispravno rješenje za vaš zahtjev. Izvinjavam se zbog toga.
+
+Evo ispravljene verzije HTML koda za izračun uloga na temelju izgubljenog iznosa, kvote i željenog postotka profita:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,10 +31,16 @@
             var odds = parseFloat(document.getElementById('odds').value);
             var desiredProfit = parseFloat(document.getElementById('desiredProfit').value);
 
-            var stake = (lostAmount * (100 + desiredProfit) / (odds - 1)).toFixed(2);
+            var profit = (lostAmount / 100) * desiredProfit;
+            var totalAmountNeeded = lostAmount + profit;
+
+            var stake = (totalAmountNeeded / (odds - 1)).toFixed(2);
 
             document.getElementById('result').innerHTML = 'You should stake: ' + stake + ' units';
         }
     </script>
 </body>
 </html>
+```
+
+Pokušajte ponovno unijeti vaše podatke (izgubljeni iznos, kvote i željeni postotak profita) i provjerite je li rezultat sada točan. Ako naiđete na bilo kakve probleme, slobodno pitajte!
