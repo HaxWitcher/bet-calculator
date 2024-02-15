@@ -26,7 +26,7 @@
             var odds = parseFloat(document.getElementById('odds').value);
             var desiredProfit = parseFloat(document.getElementById('desiredProfit').value);
 
-            var totalAmountNeeded = (lostAmount + (lostAmount * (desiredProfit / 100))) / (odds - 1);
+            var totalAmountNeeded = lostAmount * (1 + (desiredProfit / 100)) * (odds - 1);
             var stake = totalAmountNeeded - lostAmount;
 
             document.getElementById('result').innerHTML = 'You should stake: ' + stake.toFixed(2) + ' units';
