@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form method="POST">
+        Gubitci: <input type="number" step="0.01" name="losses"><br>
+        Kvota: <input type="number" step="0.01" name="odds"><br>
+        Profit: <input type="number" step="0.01" name="profit"><br>
+        <input type="submit" value="Izračunaj">
+    </form>
+    {% if stake %}
+        <p>Trebate uložiti: {{ stake }} eura</p>
+    {% endif %}
+</body>
+</html>
